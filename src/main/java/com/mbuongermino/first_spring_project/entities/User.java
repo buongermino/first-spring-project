@@ -10,7 +10,7 @@ import java.util.Objects;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private Long Id;
     private String Name;
     private String Email;
     private String Phone;
@@ -18,7 +18,7 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(long Id, String Name, String Email, String Phone, String Password) {
+    public User(Long Id, String Name, String Email, String Phone, String Password) {
         super();
         this.Id = Id;
         this.Name = Name;
@@ -31,7 +31,7 @@ public class User implements Serializable {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 
