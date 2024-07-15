@@ -16,18 +16,18 @@ import java.util.List;
 public class CategoryResource {
 
     @Autowired
-    private CategoryService orderService;
+    private CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<List<Category>> getAll() {
-        List<Category> categories = orderService.findAll();
+        List<Category> categories = categoryService.findAll();
 
         return ResponseEntity.ok().body(categories);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Category> getById(@PathVariable Long id) {
-        Category category = orderService.findById(id);
+        Category category = categoryService.findById(id);
 
         return ResponseEntity.ok().body(category);
     }
