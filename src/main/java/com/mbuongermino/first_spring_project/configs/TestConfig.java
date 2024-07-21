@@ -1,14 +1,8 @@
 package com.mbuongermino.first_spring_project.configs;
 
-import com.mbuongermino.first_spring_project.entities.Category;
-import com.mbuongermino.first_spring_project.entities.Order;
-import com.mbuongermino.first_spring_project.entities.Product;
-import com.mbuongermino.first_spring_project.entities.User;
+import com.mbuongermino.first_spring_project.entities.*;
 import com.mbuongermino.first_spring_project.enums.OrderStatus;
-import com.mbuongermino.first_spring_project.repositories.CategoryRepository;
-import com.mbuongermino.first_spring_project.repositories.OrderRepository;
-import com.mbuongermino.first_spring_project.repositories.ProductRepository;
-import com.mbuongermino.first_spring_project.repositories.UserRepository;
+import com.mbuongermino.first_spring_project.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -68,5 +65,12 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(user1, user2));
         orderRepository.saveAll(Arrays.asList(order1, order2, order3));
+
+        OrderItem oi1 = new OrderItem( p1, order1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem( p3, order1, 2, p3.getPrice());
+        OrderItem oi3 = new OrderItem( p3, order2, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem( p5, order3, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
     }
 }
